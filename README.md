@@ -1,11 +1,11 @@
-# DataWareHouse implemented by using 3 kinds of database
+## DataWareHouse implemented by using 3 kinds of database
 
-# Description
+## Description
 A accident report website for users to visualize all accidents in US since 2016.  
 Users can self-report accidents with or without user names.  
 Admin will handle all reports.
 
-# Function
+## Function
 ### Main Page
 1. Show numbers of accidents per state in the map.
 2. Show numbers of accidents per county per state in the map
@@ -34,9 +34,16 @@ Admin will handle all reports.
 5. Delete reports for untrue.
 6. Delete users.
 
-# Spring MVC
+##Back-end Technology
+Spring MVC
+Spring Data JPA
+Spring Security JWT for authentication and authorization
 
-# Angular
+##DataBase
+Neo4j, MongoDB, PostGre
+
+
+## Front-end Technology Angular
 1. Installing angular   
 > npm i -g angular
 2. Run angular 
