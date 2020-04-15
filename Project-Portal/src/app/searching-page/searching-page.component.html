@@ -1,0 +1,57 @@
+
+  <div class="container">
+    <app-alert></app-alert>
+    <div class="card card-accent-info">
+      <h5 class="card-header">Enter S in Road to see all records in city</h5>
+      <div class="card-body">
+        <div class="container">
+        <div class="col"></div>
+        <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                  <input type="text" formControlName="road" class="form-control search-slt" placeholder="Enter Searching Road"
+                         [ngClass]="{ 'is-invalid': submitted && f.road.errors }" />
+                  <div *ngIf="submitted && f.road.errors" class="invalid-feedback">
+                    <div *ngIf="f.road.errors.required">Road is required</div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                  <input type="text" formControlName="city" class="form-control search-slt" placeholder="Enter Searching City"
+                         [ngClass]="{ 'is-invalid': submitted && f.city.errors }" />
+                  <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                    <div *ngIf="f.city.errors.required">City is required</div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                  <select class="form-control search-slt" formControlName="state" [ngClass]="{ 'is-invalid': submitted && f.state.errors }">
+                    <option selected disabled value="">Select State</option>
+                    <option *ngFor="let state of this.list" [value]="this.map.get(state)">{{this.state}}</option>
+                  </select>
+                  <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+                    <div *ngIf="f.state.errors.required">State is required</div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                  <button [disabled]="loading" class="btn btn-danger">Search</button>
+                  <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        </div>
+
+        <div *ngIf="loading" class="mt-4"><img  class="pl-3" src="https://i.gifer.com/695P.gif" width="900" height="500" /></div>
+
+        <div *ngIf="!loading" class="mt-4">
+          <agm-map [latitude]="location.latitude" [longitude]="location.longitude" [zoom]="location.zoom" [zoomControl]="false" [streetViewControl]="false">
+          <agm-marker *ngFor="let marker of roadList" [latitude]="marker.latitude" [longitude]="marker.longitude"></agm-marker>
+          </agm-map>
+
+        </div>
+
+      </div>
+    </div>
+  </div>

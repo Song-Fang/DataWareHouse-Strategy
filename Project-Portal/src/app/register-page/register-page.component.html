@@ -1,0 +1,118 @@
+<div class="form-gap"></div>
+<div class="container">
+  <app-alert></app-alert>
+  <div class="row align-items-center">
+    <div class="col"></div>
+    <div align="center" class="col">
+      <a class="my-auto" href="#">
+        <i class="fas fa-registered fa-3x"></i>
+      </a>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col"></div>
+    <div align="center" class="col align-items-centerbg-light">
+      <h5> Thank you for registration </h5>
+    </div>
+    <div class="col"></div>
+  </div>
+
+
+  <div class="row align-items-center">
+    <div class="col-4"></div>
+    <div class="col align-items-center">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="input-group mb-3">
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+          </div>
+          <input type="text" formControlName="username" class="form-control" placeholder="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+          </div>
+        </div>
+        <div class="input-group mb-2">
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="fas fa-key"></i></span>
+          </div>
+          <input type="password" formControlName="password" class="form-control" placeholder="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+          </div>
+        </div>
+
+        <div class="input-group mb-2">
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+          </div>
+          <input type="password" formControlName="reenter" class="form-control" placeholder="please Re-enter your password" [ngClass]="{ 'is-invalid': (submitted && f.reenter.errors)  || f.reenter.value !== f.password.value}" />
+          <div *ngIf="(submitted && f.reenter.errors)" class="invalid-feedback">
+            <div *ngIf="f.reenter.errors.required">Password is required</div>
+          </div>
+          <div *ngIf="f.reenter.value !== f.password.value" class="invalid-feedback">
+            <div *ngIf="f.password.value !== f.reenter.value">Two passwords different</div>
+          </div>
+
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+          </div>
+          <input type="email" formControlName="email" class="form-control" placeholder="test@example.com" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email should be test@example.com</div>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="fas fa-phone"></i></span>
+        </div>
+        <input type="tel" formControlName="phonenumber" class="form-control" placeholder="XXX-XXX-XXXX" [ngClass]="{ 'is-invalid': submitted && f.phonenumber.errors }" />
+
+        <div *ngIf="submitted && f.phonenumber.errors" class="invalid-feedback">
+          <div *ngIf="f.phonenumber.errors.required">Phone number is required</div>
+          <div *ngIf="f.phonenumber.errors.pattern">Phone number should be XXX-XXX-XXXX</div>
+        </div>
+      </div>
+
+
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+              <span class="input-group-text"><i class="fas fa-city"></i></span>
+            </div>
+            <input type="text" formControlName="city" class="form-control" placeholder="City" [ngClass]="{ 'is-invalid': submitted && f.city.errors }" />
+          <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+            <div *ngIf="f.city.errors.required">State is required</div>
+          </div>
+
+            <div class="input-group-append">
+              <span class="input-group-text"><i class="fas fa-flag-usa"></i></span>
+            </div>
+          <select type="text" formControlName="state" class="form-control" placeholder="State" [ngClass]="{ 'is-invalid': submitted && f.state.errors }">
+          <option selected disabled value="">Choose...</option>
+          <option *ngFor="let state of this.list" [value]="this.map.get(state)">{{this.state}}</option>
+          </select>
+          <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+            <div *ngIf="f.state.errors.required">State is required</div>
+          </div>
+          </div>
+
+
+
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button [disabled]="loading" class="btn btn-primary">Register</button>
+            <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <a href="/user/login" class="btn btn-link">back</a>
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class="col-4"></div>
+  </div>
+</div>

@@ -1,0 +1,168 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <svg class="bi bi-cone-striped" fill="currentColor" height="30" viewBox="0 0 16 16" width="30"
+           xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd"
+              d="M7.879 11.015a.5.5 0 01.242 0l6 1.5a.5.5 0 01.037.96l-6 2a.499.499 0 01-.316 0l-6-2a.5.5 0 01.037-.96l6-1.5z"
+              fill-rule="evenodd"/>
+        <path
+          d="M11.885 12.538l-.72-2.877C10.303 9.873 9.201 10 8 10s-2.303-.127-3.165-.339l-.72 2.877c-.073.292-.002.6.256.756C4.86 13.589 5.916 14 8 14s3.14-.411 3.63-.706c.257-.155.328-.464.255-.756zM9.97 4.88l.953 3.811C10.159 8.878 9.14 9 8 9c-1.14 0-2.159-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.275 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098z"/>
+      </svg>
+      ACCI-SAFE
+    </a>
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler"
+            data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto font-weight-bold">
+        <li class="nav-item">
+          <a class="nav-link" href="/user/myaccount">User DashBoard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/selfReport">Self Report</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/reporthistory">Report History</a>
+        </li>
+      </ul>
+      <div class="inline my-2 my-lg-0">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a (click)="authenticationService.Userlogout()" class="dropdown-item" type="button">
+              Log out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<app-alert></app-alert>
+<div class="card-header">
+  <h4 class="card-title">Report Accident</h4>
+  <p class="card-category">Enter your report</p>
+</div>
+<div class="card-body">
+  <form (ngSubmit)="onSubmit()" [formGroup]="reportForm">
+    <div class="row">
+      <div class="col-md-3">
+        <label>Street</label> <br>
+        <input [ngClass]="{ 'is-invalid': submitted && f.street.errors }" class="form-control" formControlName="street"
+               placeholder="Street"
+               type="text"/>
+        <div *ngIf="submitted && f.street.errors" class="invalid-feedback">
+          <div *ngIf="f.city.errors.required">Street is required</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-3">
+
+        <label>City</label>
+        <input [ngClass]="{ 'is-invalid': submitted && f.city.errors }" class="form-control" formControlName="city"
+               placeholder="City"
+               type="text"/>
+        <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+          <div *ngIf="f.city.errors.required">City is required</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row"></div>
+    <br>
+
+    <div class="row">
+      <div class="col-md-3">
+
+        <label>State</label>
+        <select [ngClass]="{ 'is-invalid': submitted && f.state.errors }" class="form-control" formControlName="state" placeholder="State"
+                type="text">
+          <option disabled selected value="">Choose...</option>
+          <option *ngFor="let state of this.list" [value]="this.map.get(state)">{{this.state}}</option>
+        </select>
+        <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+          <div *ngIf="f.state.errors.required">State is required</div>
+        </div>
+
+      </div>
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-3">
+
+        <label>Description</label> <br>
+        <input class="form-control" formControlName="description" placeholder="description"
+               type="text"/>
+
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+        <!--      <mat-form-field>-->
+        <!--        <input matInput [matDatepicker]="myDatepicker">-->
+        <!--        <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>-->
+        <!--        <mat-datepicker #myDatepicker></mat-datepicker>-->
+        <!--      </mat-form-field>-->
+        <label>Date and Time</label>
+        <input class="form-control" formControlName="starttime" type="datetime-local" value="2018-06-12T19:30" [ngClass]="{ 'is-invalid': submitted && f.starttime.errors }">
+        <div *ngIf="submitted && f.starttime.errors" class="invalid-feedback">
+          <div *ngIf="f.starttime.errors.required">Date and time is required</div>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+
+      <div class="col-md-3">
+
+        <label>Weather Condition</label>
+        <select [ngClass]="{ 'is-invalid': submitted && f.weathercondition.errors }" class="form-control" formControlName="weathercondition"
+                type="text">
+          <option disabled selected value="">Choose...</option>
+          <option value="Clear">Clear</option>
+          <option value="Cloudy">Cloudy</option>
+          <option value="Windy">Windy</option>
+          <option value="Foggy">Foggy</option>
+          <option value="Rainy">Rainy</option>
+          <option value="Snowy">Snowy</option>
+        </select>
+        <div *ngIf="submitted && f.weathercondition.errors" class="invalid-feedback">
+          <div *ngIf="f.weathercondition.errors.required">Weather Condition is required</div>
+        </div>
+      </div>
+
+
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-md-3">
+        <label>Visibility</label>
+        <input class="form-control" formControlName="visibility" placeholder="visibility"
+               type="text"/>
+      </div>
+      <div class="col-md-4"></div>
+
+          <div class="col-md-3">
+            <label>Humidity</label>
+            <input class="form-control" formControlName="humidity" placeholder="humidity"
+                   type="text"/>
+          </div>
+
+        </div>
+
+
+    <div class="row">
+    </div>
+    <br>
+    <button class="btn btn-danger pull-right" type="submit">Report</button>
+    <img *ngIf="loading" class="pl-3"
+         src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+    <div class="clearfix"></div>
+  </form>
+</div>
+

@@ -1,0 +1,135 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <svg class="bi bi-cone-striped" fill="currentColor" height="30" viewBox="0 0 16 16" width="30"
+           xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd"
+              d="M7.879 11.015a.5.5 0 01.242 0l6 1.5a.5.5 0 01.037.96l-6 2a.499.499 0 01-.316 0l-6-2a.5.5 0 01.037-.96l6-1.5z"
+              fill-rule="evenodd"/>
+        <path
+          d="M11.885 12.538l-.72-2.877C10.303 9.873 9.201 10 8 10s-2.303-.127-3.165-.339l-.72 2.877c-.073.292-.002.6.256.756C4.86 13.589 5.916 14 8 14s3.14-.411 3.63-.706c.257-.155.328-.464.255-.756zM9.97 4.88l.953 3.811C10.159 8.878 9.14 9 8 9c-1.14 0-2.159-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.275 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098z"/>
+      </svg>
+      ACCI-SAFE
+    </a>
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+            data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto font-weight-bold">
+        <li class="nav-item">
+          <a class="nav-link" href="/user/myaccount">User DashBoard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/selfReport">Self Report</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/reporthistory">Report History</a>
+        </li>
+      </ul>
+      <div class="inline my-2 my-lg-0">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a type="button" class="dropdown-item" (click)="authenticationService.Userlogout()">
+              Log out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<app-alert></app-alert>
+          <div class="card-header">
+            <h4 class="card-title">Edit Profile</h4>
+            <p class="card-category">Complete your profile</p>
+          </div>
+          <div class="card-body">
+            <img *ngIf="formloading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <form *ngIf="!formloading">
+              <div class="row">
+                <div class="col-md-3">
+                  <form class="example-full-width">
+                    <label>Username</label> <br>
+                    <input matInput [ngModel]="user.username" name="username" disabled>
+                  </form>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-3">
+                  <form *ngIf="!edited" class="example-full-width">
+                    <label>Email Address</label>
+                    <input matInput type="email" [(ngModel)]="user.email" disabled name="email">
+                  </form>
+
+                  <form *ngIf="edited" class="example-full-width">
+                    <label>Email Address</label>
+                    <input matInput type="email" [(ngModel)]="user.email" name="email">
+                  </form>
+                </div>
+              </div>
+
+              <div class="row"></div>
+              <br>
+
+              <div class="row">
+                <div class="col-md-3">
+                  <form *ngIf="!edited" class="example-full-width">
+                    <label>Phone Number</label>
+                    <input matInput  type="text" [(ngModel)]="user.phonenumber" disabled name="phonenumber">
+                  </form>
+
+                  <form *ngIf="edited" class="example-full-width">
+                    <label>Phone Number</label>
+                    <input  matInput type="text" [(ngModel)]="user.phonenumber" name="phonenumber">
+                  </form>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-3">
+                  <form *ngIf="!edited" class="example-full-width">
+                    <label>City</label> <br>
+                    <input matInput type="email" [(ngModel)]="user.city" disabled name="city">
+                  </form>
+
+                  <form *ngIf="edited" class="example-full-width">
+                    <label>City</label> <br>
+                    <input matInput type="email" [(ngModel)]="user.city" name="city">
+                  </form>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-12">
+                  <form *ngIf="!edited" class="example-full-width">
+                    <label>State</label>
+                    <br>
+                    <select [(ngModel)]="user.state" disabled name="state">
+                      <option selected [value]="user.state">{{this.user.state}}</option>
+                      <option *ngFor="let state of this.list" [value]="this.map.get(state)">{{this.state}}</option>
+                    </select>
+                  </form>
+
+                  <form *ngIf="edited" class="example-full-width">
+                    <label>State</label>
+                    <br>
+                    <select [(ngModel)]="user.state" name="state">
+                      <option selected [value]="user.state">{{this.user.state}}</option>
+                      <option *ngFor="let state of this.list" [value]="this.map.get(state)">{{this.state}}</option>
+                    </select>
+                  </form>
+                </div>
+              </div>
+              <div class="row">
+              </div>
+              <br>
+              <button *ngIf="!edited"  type="submit" class="btn btn-danger pull-right" (click)="changeEdited()">Edit</button>
+              <button *ngIf="edited" type="submit" class="btn btn-danger pull-right" (click)="updateUser()">Update Profile</button>
+              <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+              <a *ngIf="edited" class="btn btn-link" (click)="changeEdited()">back</a>
+            </form>
+          </div>
+

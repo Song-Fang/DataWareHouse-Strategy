@@ -1,0 +1,192 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div  *ngIf=!isLoginPage() class="container">
+    <a class="navbar-brand" href="#">
+      <svg class="bi bi-cone-striped" fill="currentColor" height="30" viewBox="0 0 16 16" width="30"
+           xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd"
+              d="M7.879 11.015a.5.5 0 01.242 0l6 1.5a.5.5 0 01.037.96l-6 2a.499.499 0 01-.316 0l-6-2a.5.5 0 01.037-.96l6-1.5z"
+              fill-rule="evenodd"/>
+        <path
+          d="M11.885 12.538l-.72-2.877C10.303 9.873 9.201 10 8 10s-2.303-.127-3.165-.339l-.72 2.877c-.073.292-.002.6.256.756C4.86 13.589 5.916 14 8 14s3.14-.411 3.63-.706c.257-.155.328-.464.255-.756zM9.97 4.88l.953 3.811C10.159 8.878 9.14 9 8 9c-1.14 0-2.159-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.275 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098z"/>
+      </svg>
+      ACCI-SAFE
+    </a>
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+            data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto font-weight-bold">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="searching">Road Searching</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="virsualization">Factors Analysis</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Choose DataBase
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <a class="dropdown-item" href="#" (click)="changePostgreApi()">PostgreSQL</a>
+            <a class="dropdown-item" href="#" (click)="changeMongoDBApi()">MongoDB</a>
+            <a class="dropdown-item" href="#" (click)="changeNeo4jApi()">Neo4j</a>
+          </div>
+        </li>
+      </ul>
+      <div class="inline my-2 my-lg-0">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdown"
+               role="button" type="button">
+              <svg class="bi bi-people-circle" fill="currentColor" height="25" viewBox="0 0 16 16" width="25"
+                   xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 008 15a6.987 6.987 0 005.468-2.63z"/>
+                <path clip-rule="evenodd" d="M8 9a3 3 0 100-6 3 3 0 000 6z" fill-rule="evenodd"/>
+                <path clip-rule="evenodd" d="M8 1a7 7 0 100 14A7 7 0 008 1zM0 8a8 8 0 1116 0A8 8 0 010 8z"
+                      fill-rule="evenodd"/>
+              </svg>
+            </a>
+            <div aria-labelledby="navbarDropdown" class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="/user/myaccount">My Account</a>
+              <div class="dropdown-divider"></div>
+              <a *ngIf="(!this.authenticationService.currentUserValue)" class="dropdown-item" href="/user/login">Login/Sign Up</a>
+              <a *ngIf="(this.authenticationService.currentUserValue)" class="dropdown-item" (click)="authenticationService.Userlogout()">Logout</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <router-outlet>
+
+  </router-outlet>
+</div>
+
+
+
+
+<footer *ngIf="!isLoginPage()" class="page-footer font-small mdb-color lighten-3 pt-4">
+
+  <div class="bg-light">
+  <div class="container text-center text-md-left ">
+
+    <div class="row">
+
+      <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+
+        <h5 class="font-weight-bold text-uppercase mb-4">INSURANCE</h5>
+        <ul class="text-uppercase list-unstyled">
+          <li><p>GEICO</p></li>
+          <li><p>Allstate</p></li>
+          <li><p>Progressive</p></li>
+          <li><p>Auto-Owners Insurance</p></li>
+          <li><p>Esurance</p></li>
+
+        </ul>
+      </div>
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+        <h5 class="font-weight-bold text-uppercase mb-4">About</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <p>
+              <a class="link-unstyled" href="https://github.com/SimonXu0811/INFSCI2711-FINAL#infsci2711-final" target="_blank">PROJECTS</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a class="link-unstyled" href="https://github.com/SimonXu0811/INFSCI2711-FINAL#contributors" target="_blank">TEAMS</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a class="link-unstyled" href="https://www.kaggle.com/sobhanmoosavi/us-accidents" target="_blank">DATA SOURCE</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a class="link-unstyled" href="/admin/login">ADMIN LOGIN</a>
+            </p>
+          </li>
+        </ul>
+
+      </div>
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+        <h5 class="font-weight-bold text-uppercase mb-4">Address</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <p>
+              <i class="fas fa-home mr-3"></i> PITTSBURGH, PA, US</p>
+          </li>
+          <li>
+            <p>
+              <i class="fas fa-envelope mr-3"></i> INFSCI2711@pitt.edu</p>
+          </li>
+          <li>
+            <p>
+              <i class="fas fa-phone mr-3"></i> 123-456-7890</p>
+          </li>
+          <li>
+            <p>
+              <i class="fas fa-print mr-3"></i> 123-456-7890</p>
+          </li>
+        </ul>
+
+      </div>
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+
+        <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>
+
+        <div class="col-xs-2 col-xs-2 text-center mx-auto my-4">
+
+          <a class="btn-floating btn-fb" type="button">
+            <i class="fab fa-facebook fa-3x"></i>
+          </a>
+        </div>
+
+        <div class="col-xs-2 col-xs-2 text-center mx-auto my-4">
+          <a class="btn-floating btn-tw" type="button">
+            <i class="fab fa-twitter fa-3x"></i>
+          </a>
+        </div>
+
+        <div class="col-xs-2 col-xs-2 text-center mx-auto my-4">
+          <a class="btn-floating btn-gplus" type="button">
+            <i class="fab fa-google-plus-g fa-3x"></i>
+          </a>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+
+  </div>
+
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a> INFSCI 2711</a>
+  </div>
+
+</footer>

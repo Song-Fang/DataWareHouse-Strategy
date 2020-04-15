@@ -1,0 +1,20 @@
+<img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+
+<fusioncharts *ngIf="!loading" type="column2d" [dataSource]=dataSource (initialized)="initialized($event)">
+</fusioncharts>
+<div class="row">
+  <span class="p-2">Select size:</span>
+
+  <div class="p-2">
+    <input type="radio" name='options' [value]="'column2d'" [checked]='chart === "column2d1"' (change)="onSelectionChange('column2d1')" />
+    <label>Column2d</label>
+  </div>
+  <div class="p-2">
+    <input type="radio" name='options' [value]="'bar2d'" [checked]='chart === "bar2d1"' (change)="onSelectionChange('bar2d1')" />
+    <label>Bar2d</label>
+  </div>
+  <div class="p-2">
+    <input type="radio" name='options' [value]="'pie2d'" [checked]='chart === "pie2d1"' (change)="onSelectionChange('pie2d1')" />
+    <label>Pie2d</label>
+  </div>
+</div>
