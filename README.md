@@ -49,7 +49,7 @@ Neo4j, MongoDB, PostGre
 2. Run angular 
 > ng serve
 
-# RESTFUL APIs
+## RESTFUL APIs
 ||Operation|API|Description|
 |:---|---|---|---|
 ||GET|api/accidents/numbersByState|Select numbers of accidents per state|
