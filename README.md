@@ -38,16 +38,26 @@ Admin will handle all reports.
 Spring MVC
 Spring Data JPA
 Spring Security JWT for authentication and authorization
+Docker
 
 ##DataBase
 Neo4j, MongoDB, PostGre
 
 
-## Front-end Technology Angular
+## Front-end Technology 
+Angular
 1. Installing angular   
 > npm i -g angular
 2. Run angular 
 > ng serve
+
+##CSS style 
+BootStrap
+
+##Visualization
+ECharts
+Google Map API
+
 
 ## RESTFUL APIs
 ||Operation|API|Description|
