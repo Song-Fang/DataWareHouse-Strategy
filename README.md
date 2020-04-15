@@ -34,32 +34,34 @@ Admin will handle all reports.
 5. Delete reports for untrue.
 6. Delete users.
 
-##Back-end Technology
+## Construction&Technology Stack
+
+### Back-end Technology
 Spring MVC
 Spring Data JPA
 Spring Security JWT for authentication and authorization
 Docker
 
-##DataBase
+### DataBase
 Neo4j, MongoDB, PostGre
 
 
-## Front-end Technology 
+### Front-end Technology 
 Angular
 1. Installing angular   
 > npm i -g angular
 2. Run angular 
 > ng serve
 
-##CSS style 
+### CSS style 
 BootStrap
 
-##Visualization
+### Visualization
 ECharts
 Google Map API
 
 
-## RESTFUL APIs
+### RESTFUL APIs
 ||Operation|API|Description|
 |:---|---|---|---|
 ||GET|api/accidents/numbersByState|Select numbers of accidents per state|
