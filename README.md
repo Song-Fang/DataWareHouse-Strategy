@@ -37,10 +37,10 @@ Admin will handle all reports.
 ## Construction&Technology Stack
 
 ### Back-end Technology
-Spring MVC
-Spring Data JPA
-Spring Security JWT for authentication and authorization
-Docker
+1. Spring MVC
+2. Spring Data JPA
+3. Spring Security JWT for authentication and authorization
+4. Docker
 
 ### DataBase
 Neo4j, MongoDB, PostGre
@@ -57,8 +57,8 @@ Angular
 BootStrap
 
 ### Visualization
-ECharts
-Google Map API
+1. ECharts
+2. Google Map API
 
 
 ### RESTFUL APIs
