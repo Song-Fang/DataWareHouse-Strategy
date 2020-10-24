@@ -2,11 +2,11 @@
 
 ## Projet Description
 
-##Client: Trimble
+## Client: Trimble
 Trimble Inc. is a software service company which serves global industries in building and construction, 
 geospatial, transportation and government. 
 
-##Business Logic
+## Business Logic
 DataSource is coming from American Public transportation department. 
 The Requirement mainly comes from Virginia Public Transportation. 
 We need to build one user-friendly interface for staff in Department of Virginia public Transportation 
