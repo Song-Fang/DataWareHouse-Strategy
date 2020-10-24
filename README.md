@@ -1,9 +1,19 @@
 ## DataWareHouse implemented by using 3 kinds of database
 
-## Description
-A accident report website for users to visualize all accidents in US since 2016.  
-Users can self-report accidents with or without user names.  
-Admin will handle all reports.
+## Projet Description
+
+##Client: Trimble
+Trimble Inc. is a software service company which serves global industries in building and construction, 
+geospatial, transportation and government. 
+
+##Business Logic
+DataSource is coming from American Public transportation department. 
+The Requirement mainly comes from Virginia Public Transportation. 
+We need to build one user-friendly interface for staff in Department of Virginia public Transportation 
+to serach the traffic accidents results. Provide them with CRUD operation and statistic information to 
+analyze what really cause these kind of traffic accidents and finally provide drivers with reminders 
+and construction department with suggestions to optimize the design of the road.
+ 
 
 ## Function
 ### Main Page
@@ -41,17 +51,13 @@ Admin will handle all reports.
 2. Spring Data JPA
 3. Spring Security JWT for authentication and authorization
 4. Docker
-
+5. AWS
 ### DataBase
-Neo4j, MongoDB, PostGre
+MongoDB, PostGreSQL
 
 
 ### Front-end Technology 
-Angular
-1. Installing angular   
-> npm i -g angular
-2. Run angular 
-> ng serve
+React, Redux
 
 ### CSS style 
 BootStrap
