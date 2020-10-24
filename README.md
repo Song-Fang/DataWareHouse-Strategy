@@ -7,7 +7,7 @@ Trimble Inc. is a software service company which serves global industries in bui
 geospatial, transportation and government. 
 
 ## Business Logic
-DataSource is coming from American Public transportation department. 
+DataSource is coming from US Public transportation department. 
 The Requirement mainly comes from Virginia Public Transportation. 
 We need to build one user-friendly interface for staff in Department of Virginia public Transportation 
 to serach the traffic accidents results. Provide them with CRUD operation and statistic information to 
